@@ -16,3 +16,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+$(document).on('turbolinks:load',() => {
+  $('.message .close').on('click', function() {
+    $(this).closest('.message').transition('fade');
+  });
+});

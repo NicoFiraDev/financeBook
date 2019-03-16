@@ -2,7 +2,7 @@
 
 .item{
   &-orange {
-    color: #e18a07 !important;
+    color: #00B5AD !important;
   
     &:hover {
       background-color: #fff !important;
@@ -14,7 +14,7 @@
     color: #fff !important;
 
     &:hover {
-      background-color: #e18a07 !important;
+      background-color: #00B5AD !important;
     }
   }
 
@@ -23,14 +23,45 @@
     transition: all .2s !important;
 
     &:hover {
-      color: #e18a07 !important;
+      color: #00B5AD !important;
     }
-  }
-
-  
+  }  
 }
-
 
 .bg-black {
   background-color: #000 !important;
+}
+
+.devise__link {
+  color: #00B5AD !important;
+  display: inline-block !important;
+  margin-top: 15px !important;
+}
+
+.mb {
+  &-sm {
+    margin-bottom: 5px !important;
+  }
+
+  &-md {
+    margin-bottom: 10px !important;
+  }
+
+  &-lg {
+    margin-bottom: 20px !important;
+  }
+}
+
+.mt {
+  &-sm {
+    margin-top: 5px !important;
+  }
+
+  &-md {
+    margin-top: 10px !important;
+  }
+
+  &-lg {
+    margin-top: 20px !important;
+  }
 }
