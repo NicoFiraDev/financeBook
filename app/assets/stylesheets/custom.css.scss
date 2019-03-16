@@ -1,0 +1,36 @@
+@import "semantic-ui";
+
+.item{
+  &-orange {
+    color: #e18a07 !important;
+  
+    &:hover {
+      background-color: #fff !important;
+    }
+  }
+
+  &-main {
+    font-size: 1.2rem;
+    color: #fff !important;
+
+    &:hover {
+      background-color: #e18a07 !important;
+    }
+  }
+
+  &-name {
+    color: #fff !important;
+    transition: all .2s !important;
+
+    &:hover {
+      color: #e18a07 !important;
+    }
+  }
+
+  
+}
+
+
+.bg-black {
+  background-color: #000 !important;
+}
