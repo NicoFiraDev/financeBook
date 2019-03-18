@@ -6,6 +6,8 @@ ruby '2.6.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'stock_quote', '~> 2.0'
+gem 'hirb', '~> 0.7.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
