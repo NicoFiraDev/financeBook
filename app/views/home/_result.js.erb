@@ -1,0 +1,4 @@
+$('#results').html("<%= j (render 'home/result.html') %>");
+$('.message .close').on('click', function() {
+    $(this).closest('.message').transition('fade');
+  });

@@ -1,0 +1,24 @@
+<% if params[:action] == 'search' %>
+  <%= render 'layouts/messages' %>
+<% end %>
+<% if @stock %>
+  <div class="ui icon floating message">
+    <i class="chart line icon"></i>
+    <div class="content">
+      <div class="header">
+        <%= @stock.company_name %> (<%= @stock.symbol %>)
+      </div>
+      <div class="mt-md">
+        <strong>Primary Exchange: </strong><%= @stock.primary_exchange %>&nbsp;-&nbsp;
+        <strong>Sector: </strong><%= @stock.sector %><br>
+        <strong>Price: </strong> $<%= @stock.iex_realtime_price %><br>
+        <strong>Open: </strong> $<%= @stock.open %><br>
+        <strong>Previous Close: </strong> $<%= @stock.previous_close %><br>
+        <strong>Change: </strong>
+          <span class="text__<%= @stock.change > 0 ? 'green' : 'red' %>">
+            <%= @stock.change %>(<%= (number_to_percentage(@stock.change_percent, precision: 2)) %>)
+          </span>
+      </div>
+    </div>
+  </div>
+<% end %>

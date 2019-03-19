@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   end
   root to: redirect('/users/sign_in')
   get 'search_stocks', to: 'stocks#search'
+  get 'portfolio', to: 'users#portfolio'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
