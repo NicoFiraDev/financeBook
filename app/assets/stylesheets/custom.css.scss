@@ -84,10 +84,24 @@
   }
 }
 
-.stock-logo {
-  margin: 25px;
+.stock {
+  &-logo {
+    margin: 25px;
+  }
+
+  &__like {
+    position: absolute;
+    top: 4%;
+    left: 2%;
+  }
 }
 
 i.icon.news-icon {
   margin-right: 10px;
+}
+
+.text {
+  &-right {
+    text-align: right;
+  }
 }

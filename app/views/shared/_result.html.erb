@@ -1,11 +1,37 @@
 <% if params[:action] == 'search' %>
   <%= render 'layouts/messages' %>
 <% end %>
+
 <% if @stock %>
   <div class="ui icon floating message center">
+    <% if current_user.can_add_stock?(@stock.symbol) %>
+      <%= link_to user_stocks_path(user: current_user, stock: @stock.symbol), 
+                  class: 'stock__like', method: :post do %>
+        <i class="star teal outline large icon"></i>
+      <% end %>
+    <% else %>
+      <div class="stock__like">
+        <%= link_to '#' do %>
+          <% if current_user.stock_already_added?(@stock.symbol) %>
+            <i class="star teal large icon"></i>
+          <% elsif !current_user.under_stock_limit? %>
+            <i class="disabled star teal outline large icon"></i>
+          <% end %>
+        <% end %>
+        <a class="ui red small tag label">
+          Stock cannot be added because you have already added
+          <% if current_user.stock_already_added?(@stock.symbol) %>
+            this stock
+          <% elsif !current_user.under_stock_limit? %>
+            10 stocks
+          <% end %>
+        </a>
+      </div>
+    <% end %>
+
     <img src=<%= @logo.url %> alt="logo" class="stock-logo">
     <div class="content">
-      <div class="header">
+      <div class="header text-right">
         <%= @stock.company_name %> (<%= @stock.symbol %>)
       </div>
       <div class="mt-md">
@@ -49,26 +75,7 @@
     </div>
   </div>
   <br>
-  <div class="ui items">
-    <% @news.news.each do |new| %>
-      <div class="item">
-        <i class="big teal newspaper outline icon news-icon"></i>
-        <div class="content">
-          <a class="header"><%= new['headline'] %></a>
-          <div class="meta">
-            <span><%= new['source'] %></span>
-            -
-            <span><%= new['datetime'].to_date.strftime("%D") %></span>
-          </div>
-          <div class="description">
-            <p><%= new['summary'] %></p>
-          </div>
-          <div class="extra">
-            <%= link_to 'Read more', new['url'], class: 'ui teal small button', target: '_blank' %>
-          </div>
-        </div>
-      </div>
-      <div class="ui divider"></div>
-    <% end %>
-  </div>
+  <% unless current_page?(action: 'index', controller: 'home') %>
+    <%= render 'stocks/news' %>
+  <% end %>
 <% end %>

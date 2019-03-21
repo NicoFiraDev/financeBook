@@ -1,4 +1,4 @@
-$('#results').html("<%= j (render 'home/result.html') %>");
+$('#results').html("<%= j (render 'shared/result.html') %>");
 $('#search-stock-form input').val('');
 $('.message .close').on('click', function() {
     $(this).closest('.message').transition('fade');

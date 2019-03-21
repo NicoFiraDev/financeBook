@@ -1,1 +1,21 @@
-<h1>My Portfolio</h1>
+<div class="ui container">
+  <h1>My Portfolio</h1>
+  <div class="ui grid mt-lg">
+
+    <div class="twelve wide column">
+      <%= render 'shared/search_bar' %>
+
+      <div id="results" class="mt-lg">
+        <%= render 'shared/result' %>
+      </div>
+      
+      <%= render 'stocks/list' %>
+
+    </div>
+
+    <div class="four wide column">
+      <%= render 'layouts/sidebar' %>
+    </div>
+
+  </div>
+</div>

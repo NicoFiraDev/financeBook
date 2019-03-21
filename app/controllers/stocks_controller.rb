@@ -9,13 +9,10 @@ class StocksController < ApplicationController
       @logo = StockQuote::Stock.logo(params[:stock])
       flash.now[:alert] = 'You have entered an incorrect symbol' unless @stock
     end
-    respond_to do |format|
-      format.js { render partial: 'home/result' }
-    end
-  end
 
-  def news
-    
+    respond_to do |format|
+      format.js {render partial: 'shared/result'}
+    end
   end
 
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :user_stocks, only: %i[create destroy]
   authenticated :user do
     root to: 'home#index', as: :authenticated_root
   end
