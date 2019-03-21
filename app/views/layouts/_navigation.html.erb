@@ -6,7 +6,7 @@
       <%#= link_to 'Profile', '#', class: 'item item-teal' %>
       <%= link_to 'Friends', friends_path, class: 'item item-teal' %>
       <div class="right menu">
-        <%= link_to current_user.full_name.present? ? current_user.full_name : current_user.email, edit_registration_path(current_user), class: 'item item-name' %>
+        <%= link_to current_user.full_name.present? ? current_user.full_name : current_user.email, edit_user_registration_path(current_user.id), class: 'item item-name' %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'ui item item-red' %>
       </div>
     <% end %>
