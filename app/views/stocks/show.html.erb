@@ -1,0 +1,47 @@
+<div class="ui container">
+  <h2 class="ui icon center aligned header">
+    <img src=<%= @logo.url %> alt="logo" class="stock-logo">
+    <div class="content">
+      <%= @stock.company_name %> (<%= @stock.symbol %>)
+      <div class="sub header"><%= @stock.primary_exchange %></div>
+    </div>
+  </h2>
+    <table class="ui teal very compact small table">
+      <tbody>
+        <tr>
+          <td><strong>Price:</strong></td>
+          <td>$<%= @stock.iex_realtime_price %></td>
+        </tr>
+        <tr>
+          <td><strong>Previous Close:</strong></td>
+          <td>$<%= @stock.previous_close %></td>
+        </tr>
+        <tr>
+          <td><strong>High:</strong></td>
+          <td>$<%= @stock.high %></td>
+        </tr>
+        <tr>
+          <td><strong>Low:</strong></td>
+          <td>$<%= @stock.low %></td>
+        </tr>
+        <tr>
+          <td><strong>Open:</strong></td>
+          <td>$<%= @stock.open %></td>
+        </tr>
+        <tr>
+          <td><strong>Close:</strong></td>
+          <td>$<%= @stock.close %></td>
+        </tr>
+        <tr>
+          <td><strong>Change:</strong></td>
+          <td>
+            <span class="text__<%= @stock.change > 0 ? 'green' : 'red' %>">
+              <%= @stock.change %> (<%= (number_to_percentage(@stock.change_percent, precision: 2)) %>)
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <br>
+  <%= render 'stocks/news' %>
+</div>

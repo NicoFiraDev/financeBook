@@ -1,9 +1,9 @@
 <% if params[:action] == 'search' %>
   <%= render 'layouts/messages' %>
 <% end %>
-
 <% if @stock %>
   <div class="ui icon floating message center">
+  
     <% if current_user.can_add_stock?(@stock.symbol) %>
       <%= link_to user_stocks_path(user: current_user, stock: @stock.symbol), 
                   class: 'stock__like', method: :post do %>
@@ -11,7 +11,7 @@
       <% end %>
     <% else %>
       <div class="stock__like">
-        <%= link_to '#' do %>
+        <%= link_to user_stock_path(@saved_stock.id), method: :delete do %>
           <% if current_user.stock_already_added?(@stock.symbol) %>
             <i class="star teal large icon"></i>
           <% elsif !current_user.under_stock_limit? %>

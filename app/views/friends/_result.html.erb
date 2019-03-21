@@ -1,0 +1,37 @@
+<% if params[:action] == 'search' %>
+  <%= render 'layouts/messages' %>
+<% end %>
+
+<% if @users %>
+  <% if @users.size > 0 %>
+    <div id="friend-lookup-results" class="ui icon floating message center">
+      <i class="user teal icon"></i>
+      <div class="content">
+        <div class="mt-md">
+          <table class="ui teal very compact small table">
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><strong>Name: </strong><%= user.full_name %></td>
+                  <td><strong>Email: </strong><%= user.email %></td>
+                  <td>
+                    <%= link_to user_path(user) do %>
+                      <i class="user large icon"></i>
+                    <% end %>
+                    <% if current_user.not_friends_with?(user.id) %>
+                      <%= link_to add_friend_path(user: current_user, friend: user), method: :post  do %>
+                        <i class="user plus green large icon"></i>
+                      <% end %>
+                    <% else %>
+                      <i class="disabled user plus green large icon"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

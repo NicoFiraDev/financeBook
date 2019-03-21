@@ -18,8 +18,14 @@
         <td><%= user_stock.primary_exchange %></td>
         <td><%= user_stock.sector %></td>
         <% if @user.id == current_user.id %>
-          <td><%= link_to 'Delete this stock', user_stock_path(user_stock.id), method: :delete,
-            data: {confirm: 'Are you sure?'}, class: 'ui mini red button' %></td>
+          <td>
+            <%= link_to stock_path(user_stock.ticker) do %>
+              <i class="arrow circle large right icon"></i>
+            <% end %>
+            <%= link_to user_stock_path(user_stock.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
+              <i class="trash alternate large red icon"></i>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>

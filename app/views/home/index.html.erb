@@ -1,4 +1,10 @@
 <div class="ui container">
+  <h2 class="ui center header mt-lg">
+    <i class="chart teal line icon"></i>
+    <div class="content">
+      FinanceBook
+    </div>
+  </h2>
   <div class="ui grid mt-lg">
 
     <div class="twelve wide column">
@@ -6,6 +12,34 @@
 
       <div id="results" class="mt-lg">
         <%= render 'shared/result' %>
+      </div>
+
+      <div class="mt-xlg">
+        <h2 class="center header">
+          Top News
+        </h2>
+        <div class="ui items mt-xlg">
+          <% @news.news.each do |new| %>
+            <div class="item">
+              <i class="big teal newspaper outline icon news-icon"></i>
+              <div class="content">
+                <a class="header"><%= new['headline'] %></a>
+                <div class="meta">
+                  <span><%= new['source'] %></span>
+                  -
+                  <span><%= new['datetime'].to_date.strftime("%D") %></span>
+                </div>
+                <div class="description">
+                  <p><%= new['summary'] %></p>
+                </div>
+                <div class="extra">
+                  <%= link_to 'Read more', new['url'], class: 'ui teal small button', target: '_blank' %>
+                </div>
+              </div>
+            </div>
+            <div class="ui divider"></div>
+          <% end %>
+        </div>
       </div>
 
     </div>
