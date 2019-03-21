@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   root to: redirect('/users/sign_in')
   get 'search_stocks', to: 'stocks#search'
   get 'portfolio', to: 'users#portfolio'
+  get 'friends', to: 'users#friends'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
