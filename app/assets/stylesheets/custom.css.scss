@@ -1,9 +1,17 @@
 @import "semantic-ui";
 
 .item{
-  &-orange {
+  &-teal {
     color: #00B5AD !important;
   
+    &:hover {
+      background-color: #fff !important;
+    }
+  }
+
+  &-red {
+    color: rgb(255, 0, 0) !important;
+
     &:hover {
       background-color: #fff !important;
     }
@@ -74,4 +82,12 @@
   &__red {
     color: rgb(255, 0, 0);
   }
+}
+
+.stock-logo {
+  margin: 25px;
+}
+
+i.icon.news-icon {
+  margin-right: 10px;
 }

@@ -2,12 +2,12 @@
   <div class="ui container">
     <%= link_to 'FinanceBook', root_path, class: 'item item-main' %>
     <% if current_user %>
-      <%= link_to 'Portfolio', portfolio_path, class: 'item item-orange' %>
-      <%= link_to 'Profile', '#', class: 'item item-orange' %>
-      <%= link_to 'Friends', '#', class: 'item item-orange' %>
+      <%= link_to 'Portfolio', portfolio_path, class: 'item item-teal' %>
+      <%#= link_to 'Profile', '#', class: 'item item-teal' %>
+      <%= link_to 'Friends', '#', class: 'item item-teal' %>
       <div class="right menu">
-        <%= link_to 'User\'s name', '#', class: 'item item-name' %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'ui item item-orange' %>
+        <%= link_to current_user.email, '#', class: 'item item-name' %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'ui item item-red' %>
       </div>
     <% end %>
   </div>

@@ -2,23 +2,73 @@
   <%= render 'layouts/messages' %>
 <% end %>
 <% if @stock %>
-  <div class="ui icon floating message">
-    <i class="chart line icon"></i>
+  <div class="ui icon floating message center">
+    <img src=<%= @logo.url %> alt="logo" class="stock-logo">
     <div class="content">
       <div class="header">
         <%= @stock.company_name %> (<%= @stock.symbol %>)
       </div>
       <div class="mt-md">
-        <strong>Primary Exchange: </strong><%= @stock.primary_exchange %>&nbsp;-&nbsp;
-        <strong>Sector: </strong><%= @stock.sector %><br>
-        <strong>Price: </strong> $<%= @stock.iex_realtime_price %><br>
-        <strong>Open: </strong> $<%= @stock.open %><br>
-        <strong>Previous Close: </strong> $<%= @stock.previous_close %><br>
-        <strong>Change: </strong>
-          <span class="text__<%= @stock.change > 0 ? 'green' : 'red' %>">
-            <%= @stock.change %>(<%= (number_to_percentage(@stock.change_percent, precision: 2)) %>)
-          </span>
+        <table class="ui teal very compact small table">
+          <tbody>
+            <tr>
+              <td><strong>Price:</strong></td>
+              <td>$<%= @stock.iex_realtime_price %></td>
+            </tr>
+            <tr>
+              <td><strong>Previous Close:</strong></td>
+              <td>$<%= @stock.previous_close %></td>
+            </tr>
+            <tr>
+              <td><strong>High:</strong></td>
+              <td>$<%= @stock.high %></td>
+            </tr>
+            <tr>
+              <td><strong>Low:</strong></td>
+              <td>$<%= @stock.low %></td>
+            </tr>
+            <tr>
+              <td><strong>Open:</strong></td>
+              <td>$<%= @stock.open %></td>
+            </tr>
+            <tr>
+              <td><strong>Close:</strong></td>
+              <td>$<%= @stock.close %></td>
+            </tr>
+            <tr>
+              <td><strong>Change:</strong></td>
+              <td>
+                <span class="text__<%= @stock.change > 0 ? 'green' : 'red' %>">
+                  <%= @stock.change %> (<%= (number_to_percentage(@stock.change_percent, precision: 2)) %>)
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+  </div>
+  <br>
+  <div class="ui items">
+    <% @news.news.each do |new| %>
+      <div class="item">
+        <i class="big teal newspaper outline icon news-icon"></i>
+        <div class="content">
+          <a class="header"><%= new['headline'] %></a>
+          <div class="meta">
+            <span><%= new['source'] %></span>
+            -
+            <span><%= new['datetime'].to_date.strftime("%D") %></span>
+          </div>
+          <div class="description">
+            <p><%= new['summary'] %></p>
+          </div>
+          <div class="extra">
+            <%= link_to 'Read more', new['url'], class: 'ui teal small button', target: '_blank' %>
+          </div>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+    <% end %>
   </div>
 <% end %>
