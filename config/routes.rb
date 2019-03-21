@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'user/registrations'} #new Ruby 1.9 hash syntax
   resources :user_stocks, only: %i[create destroy]
   authenticated :user do
     root to: 'home#index', as: :authenticated_root
